@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* The palette: warm paper, dark brown ink instead of pure black, plus pine,
+   mustard and tomato for accents. Going for old workbook, not SaaS dashboard.
+   Checked text/background combos for contrast. */
+:root {
+  --paper: #fbf3e2;
+  --card: #fffdf7;
+  --ink: #2b2522;
+  --pine: #1f6f63;
+  --mustard: #f2b134;
+  --tomato: #c2410c;
+}
+
+/* Hooks the palette and fonts into Tailwind so I can write bg-pine, text-ink, etc. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-pine: var(--pine);
+  --color-mustard: var(--mustard);
+  --color-tomato: var(--tomato);
+  --font-sans: "Nunito Variable", system-ui, sans-serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
+}
+
+body {
+  background-color: var(--paper);
+  /* faint dot grid, like the paper in an old workbook */
+  background-image: radial-gradient(rgba(43, 37, 34, 0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Fraunces has dials you can turn. These two make the headings softer and a
+   little goofy: storybook, not corporate. */
+.font-display {
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+
+/* Clear, consistent focus ring for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--pine);
+  outline-offset: 3px;
+}
+
+/* Trap motion: the cat walk is slow and the door is fast on purpose. */
+.cat-walk {
+  transition: transform 1.4s ease-in-out;
+}
+.trap-door {
+  transition: transform 0.18s ease-in;
+}
+/* The part markers grow a little on hover.
+   Heads up: Tailwind centers them with the `translate` property. If this used
+   `transform: scale()` it would wipe out that centering and the marker would
+   jump. Using the separate `scale` property leaves the centering alone. */
+.hotspot {
+  transition: scale 0.15s ease;
+}
+.hotspot:hover {
+  scale: 1.08;
+}
+
+/* On "Bait it" your mouse turns into a little sardine, like you're holding
+   the food over the trap and about to drop it. It's a tiny picture (32px)
+   written right here as an SVG, so there's no extra file to load: a
+   silver-blue fish with a dark brown outline like the drawing, tilted head
+   down to the left as if it's falling.
+   "16 16" is the exact spot that counts as the click: the middle of the fish.
+   If a browser can't show the picture, you get the normal pointing hand. */
+.sardine-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-40 16 16)' stroke='%232b2522' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M23 16 L29 11.5 L28 16 L29 20.5 Z' fill='%2393b4cc'/%3E%3Cpath d='M3.5 16 C7 11 18 11 23.5 16 C18 21 7 21 3.5 16 Z' fill='%23c9dbe8'/%3E%3Cpath d='M7.5 14.3 C11 12.9 17 13 21 14.8' fill='none' stroke='%236f8fa8' stroke-width='1.2'/%3E%3Ccircle cx='7.2' cy='15.2' r='1' fill='%232b2522' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer;
+}
+
+/* Unexplored parts get a soft ring so they read as tappable */
+.hotspot-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  border: 3px solid var(--mustard);
+  animation: hotspot-pulse 1.8s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes hotspot-pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Check / X marks, the SNAP burst and the ear tip label pop in: they start
+   small and see-through, then grow to full size. The first two lines make
+   them grow from their own center instead of the corner of the drawing. */
+.pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop 0.25s ease-out;
+}
+@keyframes pop {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* The "Trapper in Training" stamp starts big and drops onto the page with a
+   tiny bounce, like someone stamping it. */
+.stamp {
+  animation: stamp 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+@keyframes stamp {
+  from { transform: scale(1.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* The result panel on phones slides up from the Back/Next bar. It only
+   slides a little way (plus a fade), so it never passes over the buttons. */
+.result-panel {
+  animation: result-panel 0.2s ease-out;
+}
+@keyframes result-panel {
+  from { transform: translateY(1.5rem); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Pet Tootie on the first or last step and she does a happy hop: she
+   squishes down a little (like she's getting ready), jumps, lands with a
+   squish, and does one smaller bounce. The first two lines make her squish
+   and stretch from her feet, not from the middle of the drawing.
+   Her eyes close during the hop (that part is in Tootie.tsx). */
+.tootie-hop {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: tootie-hop 0.9s ease-in-out;
+}
+@keyframes tootie-hop {
+  0% { transform: translateY(0) scale(1, 1); }
+  12% { transform: translateY(0) scale(1.06, 0.92); }
+  35% { transform: translateY(-30px) scale(0.96, 1.05); }
+  55% { transform: translateY(0) scale(1.05, 0.94); }
+  70% { transform: translateY(-12px) scale(0.98, 1.02); }
+  85% { transform: translateY(0) scale(1.02, 0.98); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+
+/* Tootie blinks now and then, like a real cat: her eyes stay open for almost
+   5 seconds, squish shut for a split second, and open again, over and over.
+   The blink comes at the END of each 5 seconds, not the start. Every time
+   she walks to a new spot the timer starts over (see the key in
+   TrapDiagram.tsx), so the walk (1.4 seconds) is always done before she
+   blinks. The first two lines make her eyes close toward their own middle. */
+.tootie-blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tootie-blink 5s ease-in-out infinite;
+}
+@keyframes tootie-blink {
+  0%, 94% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
+  98%, 100% { transform: scaleY(1); }
+}
+
+/* Some people turn on "reduce motion" in their phone or computer settings
+   (motion can cause dizziness or nausea). For them, everything above stops
+   moving: no walking, no pulsing, no popping, no sliding, no hopping. Things
+   just appear. (Petting Tootie still closes her eyes, she just doesn't hop.) */
+@media (prefers-reduced-motion: reduce) {
+  .cat-walk,
+  .trap-door,
+  .hotspot {
+    transition: none;
+  }
+  .hotspot-pulse::after,
+  .pop,
+  .stamp,
+  .result-panel,
+  .tootie-hop,
+  .tootie-blink {
+    animation: none;
+  }
+  .hotspot-pulse::after {
+    opacity: 0.9;
+  }
+}
