@@ -1,7 +1,7 @@
 // All the words live here. I wanted the lesson copy editable without digging
 // through JSX, so if a TNR group ever wants to reword something (or I find a
 // fact that's off), it's one file. The components just read from this.
-// TNR facts are from my own trapping, but double check before publishing.
+// TNR facts are from my own trapping, but double-check before publishing.
 
 // The nine steps, in order. Everything else (progress paws, captions, field
 // notes, the Next gating) keys off these ids, so adding a step starts here.

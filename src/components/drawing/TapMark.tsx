@@ -1,5 +1,4 @@
-// The green ✓ or red ✕ circle that pops up where you tapped on the "Bait it"
-// step. Same idea as the mirrors game.
+// The green ✓ or red ✕ circle that pops up where you tapped on the "Bait it" step.
 export function TapMark({ x, y, isRight }: { x: number; y: number; isRight: boolean }) {
   const color = isRight ? "#15803d" : "#be123c";
 

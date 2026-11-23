@@ -1,9 +1,9 @@
 # TNR Basics: Catching the Cat
 
-This is an interactive field guide for all dages that teaches folks how to humanely trap a community cat for TNR (trap, neuter, return). I based this off of my own experience doing TNR in New York City. In this interactive experience you meet Tootie, learn how a box trap works, how to bait it, set it, handle the moment the door drops, and finish with what to do in the real world. 
+This is an interactive field guide for all ages that teaches folks how to humanely trap a community cat for TNR (trap, neuter, return). I based this off of my own experience doing TNR in New York City. In this interactive experience you meet Tootie, learn how a box trap works, how to bait it, set it, handle the moment the door drops, and finish with what to do in the real world. 
 
-**Live:** [add Vercel URL]  
-**Repo:** [add repo URL]
+**Live:** https://tnr-tootie.vercel.app/
+**Repo:** https://github.com/sophieadamsweb/tnr-tootie
 
 ![The last step: Tootie back home with her ear tip](docs/preview.png)
 
@@ -11,7 +11,7 @@ This is an interactive field guide for all dages that teaches folks how to human
 
 Growing up in NYC meant seeing community cats everywhere, and caring for them is unavoidable (at least for me!). It becomes very clear quickly that accessible care is hard to access for these animals, and they usually get the short end of the stick because of it. I quickly got TNR certified and started to tackle the cat colonies in my own neighborhood. The first time I set a trap I had a lot of questions nobody had answered for me: where does the food go, what do I do when it snaps shut and the cat is losing it, why is everyone covering their traps with towels/sheets. A lot of this information is presented very plainly or even outdated, therefore it's hard to consume and not very engaging. 
 
-It's a real skill with a physical tool, a sequence that matters, and a couple of moments where your instinct is exactly wrong. That makes it a perfect fit for a short interactive lesson, and this is actually something I'd genuiely use for outreach.
+It's a real skill with a physical tool, a sequence that matters, and a couple of moments where your instinct is exactly wrong. That makes it a perfect fit for a short interactive lesson, and this is actually something I'd genuinely use for outreach.
 
 ## The lesson
 
@@ -24,7 +24,7 @@ Nine short steps. Each one asks you to do one thing!
 | 3 | Meet the trap | The trap is our best friend here. Tap the numbered parts to learn what each one does. Explore three to move on. |
 | 4 | Bait it | Tap anywhere inside the trap to drop the food. A green ✓ or red ✕ lands where you tapped, and each wrong spot explains why it fails. |
 | 5 | Set it | Actually setting the trap: line the floor, cover the back, hook the door, then step back and watch Tootie walk in. SNAP!! |
-| 6 | You caught one | Tootie is thrashing. This is stressul and scary, what do you do first? |
+| 6 | You caught one | Tootie is thrashing. This is stressful and scary, what do you do first? |
 | 7 | What happens next | The meat and potatoes. Tootie's trip to the clinic, recovery, ear tip, then back home. |
 | 8 | Check yourself | Three quick questions pulled from earlier steps. |
 | 9 | Your turn | How to go from this lesson to a real trap: certification, clinic spots, a backup vet. |
@@ -107,7 +107,7 @@ The idea: **words** live in `content/`, **decisions** live in `lib/`, and **thin
 3. `TrapDiagram` here we draw exactly that description. It never needs to know which step you're on thanks to everything we've done above to prepare.
 4. The current step's file in `steps/` shows the text and buttons for that page.
 
-Since the picture is always worked out fresh from what you've already accomplished, it can't get out of sync. Seeing the wrong content / a malconfigured state can take you out of the experience, so I wanted to avoid that at all costs. Go back three steps and forward again - the trap still has your newspaper, towel and bowl in the right place. 
+Since the picture is always worked out fresh from what you've already accomplished, it can't get out of sync. Seeing the wrong content / a misconfigured state can take you out of the experience, so I wanted to avoid that at all costs. Go back three steps and forward again - the trap still has your newspaper, towel and bowl in the right place. 
 
 A few other details:
 - **Tapping the trap.** The browser tells us where on the *screen* you tapped; `getScreenCTM()` converts that to where in the *drawing* you tapped, so it's accurate at any screen size. `zoneForPoint()` then says back / plate / door / outside. This adds a layer of interactivity that feels genuine - much nicer than clicking predetermined points.
@@ -168,7 +168,7 @@ A few other details:
 
 ## Time and tools
 
-- **Time spent:** about [X] hours. Most of it went into the flourishes: the field guide styling, drawing Tootie, the SNAP, and the ear-tip ending.
+- **Time spent:**  about 4 hours. Roughly 1 hour building the prototype, 1 hour getting everything working with Claude Code, and the rest on the flourishes (the field guide styling, drawing Tootie, the sardine cursor, the SNAP, the ear-tip ending), plus testing and deploying.
 - **Stack:** the provided Next.js + TypeScript + Tailwind starter, two `@fontsource` font packages, and vitest.
 - **Code notes:** every function and major block has a short comment on what it does and why. `NOTES.md` walks through the files in order.
 - **AI use:** I used Claude to talk through the lesson flow, scaffold the components, draft some copy, and run QA. I fact-checked the TNR content against my own experience, made the design and teaching decisions, and reviewed and edited all of the code.

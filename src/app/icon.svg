@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="104 138 68 68">
+  <!-- The browser tab icon: Tootie's head with her ear tip, copied from
+       src/components/drawing/Tootie.tsx (same shapes, same colors), cropped
+       tight so she's as big as possible in a tiny browser tab. -->
+  <g stroke="#2b2522" stroke-width="2.5" stroke-linejoin="round">
+    <!-- ears: the left one has the flat ear tip -->
+    <path d="M120 168 L118 150 L128 147 L138 158 Z" fill="#6b7280" />
+    <path d="M140 158 L159 140 L158 168 Z" fill="#6b7280" />
+    <!-- head -->
+    <circle cx="138" cy="180" r="24" fill="#6b7280" />
+    <!-- eyes with a little shine, and her nose -->
+    <ellipse cx="128" cy="178" rx="4" ry="5" fill="#2b2522" stroke="none" />
+    <ellipse cx="146" cy="178" rx="4" ry="5" fill="#2b2522" stroke="none" />
+    <circle cx="129.5" cy="176" r="1.5" fill="#fff" stroke="none" />
+    <circle cx="147.5" cy="176" r="1.5" fill="#fff" stroke="none" />
+    <path d="M133 188 h8 l-4 4 Z" fill="#f4a3a8" stroke="none" />
+    <!-- whiskers -->
+    <path d="M126 192 l-20 -2 M126 195 l-19 4 M148 192 l20 -2 M148 195 l19 4" stroke-width="1.2" />
+  </g>
+</svg>

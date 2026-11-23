@@ -9,7 +9,7 @@ comments saying the same things right where they apply.
 
 Three kinds of files:
 
-- **Words** (`src/content/`): this file has every everything the learner reads. 
+- **Words** (`src/content/`): this file has everything the learner reads. 
 No React, no logic - pretty much all content except one small function that 
 figures out which zone a tap landed in.
 - **Decisions** (`src/lib/`): "given what the learner has done, what should
@@ -32,12 +32,12 @@ can't drift out of sync with what the learner has done.
 
 Every word in the lesson, so wording changes never touch UI code.
 
-- **STEPS**: the nine steps in order. This includes all aptions, paw prints, field notes and
+- **STEPS**: the nine steps in order. This includes all captions, paw prints, field notes and
   the Next button which all key off these ids.
 - **StepId**: this is built automatically from STEPS. Because captions and field notes
   use it, TypeScript has a lot to say if a step is missing either one.
 - **CAPTIONS**: "Fig. 3." style captions under the drawing are taken care of here, like a textbook.
-- **FIELD_NOTES**: the yellow sticky notes. Conversational real-world tips that are informative and nice to  know but not needed to move on, so the main text stays short n snappy.
+- **FIELD_NOTES**: the yellow sticky notes. Conversational real-world tips that are informative and nice to know but not needed to move on, so the main text stays short n snappy.
 - **NEXT_HINTS**: what to say next to help move on past a grayed-out Next button.
 - **RESULT_HEADINGS**: the bold "Nice." / "Not quite." line on top of a result.
   The Feedback boxes and the phone result panel both read it, so they match.

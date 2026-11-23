@@ -2,7 +2,7 @@ import { TRAP_PARTS, type TrapPartId } from "@/content/lesson";
 
 // Here we are working on the numbered circles you tap on the "Meet the trap" step.
 //
-// Each of these are actual <button>s that are sitting on top of the drawing 
+// Each of these is an actual <button> that's sitting on top of the drawing 
 // instead of being shapes inside it. 
 //
 // With this approach keyboards, screen readers, and touch devices all can
